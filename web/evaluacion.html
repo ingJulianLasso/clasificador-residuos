@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Evaluación del clasificador de residuos</title>
+</head>
+<body>
+  <p>Página del arnés: <code>window.evaluar(parametros)</code> recorre la lista de imágenes y deja todo en <code>window.resultados</code>.</p>
+  <script type="module">
+    import { cargarLibrerias, cargarModelo, cargarImagen, clasificar } from './inferencia.js';
+
+    window.resultados = { estado: 'esperando' };
+
+    // parametros: { libreria (null para la de por defecto), modelo (URL de la carpeta),
+    //               canecas (contenido de canecas.json o null), imagenes (URL de cada una) }
+    window.evaluar = async ({ libreria, modelo, canecas, imagenes }) => {
+      const resultados = { estado: 'corriendo', hechas: 0, total: imagenes.length, filas: [] };
+      window.resultados = resultados;
+      try {
+        resultados.entorno = await cargarLibrerias(libreria ?? undefined);
+        const clasificador = await cargarModelo(modelo);
+        resultados.etiquetas = clasificador.getClassLabels();
+        resultados.tensores_antes = window.tf.memory().numTensors;
+        const inicio = performance.now();
+        for (const url of imagenes) {
+          const imagen = await cargarImagen(url);
+          resultados.filas.push(await clasificar(clasificador, imagen, canecas));
+          resultados.hechas += 1;
+        }
+        resultados.segundos = (performance.now() - inicio) / 1000;
+        resultados.tensores_al_final = window.tf.memory().numTensors;
+        resultados.estado = 'terminado';
+      } catch (error) {
+        resultados.error = String(error?.stack ?? error);
+        resultados.estado = 'error';
+      }
+    };
+  </script>
+</body>
+</html>

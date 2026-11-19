@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sugiere la caneca blanca, verde o negra de un residuo a partir de una foto, con un modelo de Teachable Machine.">
+  <title>Clasificador de residuos: ¿blanca, verde o negra?</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="estilos.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body data-modelo="cargando">
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="encabezado">
+    <p class="franja" role="note">Prototipo académico de laboratorio: sugiere una caneca, pero no reemplaza las indicaciones de separación de tu municipio.</p>
+    <div class="contenedor">
+      <h1>Clasificador de residuos</h1>
+      <p class="lema">¿Blanca, verde o negra? Sube la foto de un residuo y el modelo sugiere su material y su caneca.</p>
+      <p id="estado-modelo" class="estado-modelo" role="status">Cargando el modelo desde Teachable Machine…</p>
+    </div>
+  </header>
+
+  <main id="contenido" class="contenedor">
+    <div class="pestanas" role="tablist" aria-label="Secciones de la aplicación">
+      <button type="button" role="tab" id="pestana-clasificar" data-ancla="clasificar" aria-controls="panel-clasificar" aria-selected="true">Clasificar</button>
+      <button type="button" role="tab" id="pestana-evaluar" data-ancla="evaluar" aria-controls="panel-evaluar" aria-selected="false" tabindex="-1">Evaluar</button>
+      <button type="button" role="tab" id="pestana-acerca" data-ancla="acerca" aria-controls="panel-acerca" aria-selected="false" tabindex="-1">Acerca de</button>
+    </div>
+
+    <section id="panel-clasificar" class="panel" role="tabpanel" aria-labelledby="pestana-clasificar" tabindex="0" data-estado="vacio">
+      <h2>Clasificar fotos</h2>
+      <p>Elige una o varias fotos de residuos en JPEG, PNG o WebP. En el celular puedes tomarlas con la cámara o elegirlas de la galería. Las fotos no salen de tu dispositivo.</p>
+      <div id="zona-soltar" class="zona-soltar">
+        <p class="zona-texto">Arrastra las fotos aquí o</p>
+        <input type="file" id="clasificar-fotos" class="visualmente-oculto" multiple accept="image/jpeg,image/png,image/webp">
+        <label for="clasificar-fotos" class="boton">Elegir fotos</label>
+      </div>
+      <p id="clasificar-progreso" class="progreso" aria-live="polite" aria-atomic="true"></p>
+      <div id="clasificar-acciones" class="acciones" hidden>
+        <a id="clasificar-descargar-csv" class="boton boton-secundario" href="#" download="clasificacion.csv">Descargar CSV</a>
+        <button type="button" id="clasificar-limpiar" class="boton boton-secundario">Limpiar</button>
+      </div>
+      <ul id="clasificar-tarjetas" class="tarjetas" aria-label="Fotos clasificadas"></ul>
+    </section>
+
+    <section id="panel-evaluar" class="panel" role="tabpanel" aria-labelledby="pestana-evaluar" tabindex="0" data-estado="vacio" hidden>
+      <h2>Evaluar el modelo con fotos etiquetadas</h2>
+      <p>Mide qué tan bien acierta el modelo con fotos cuya clase ya conoces. La clase puede escribirse con la etiqueta de RealWaste o con el nombre en español: <span id="clases-admitidas">las clases se cargan con el modelo</span>.</p>
+      <div class="opciones">
+        <form id="form-csv" class="opcion">
+          <h3>Opción 1: fotos y un CSV de etiquetas</h3>
+          <p>El CSV lleva el encabezado <code>archivo,clase</code> y una fila por foto. El archivo puede ir con su carpeta o sin ella.</p>
+          <div class="campo">
+            <label for="evaluar-csv">CSV de etiquetas</label>
+            <input type="file" id="evaluar-csv" accept=".csv,text/csv" required>
+          </div>
+          <div class="campo">
+            <label for="evaluar-imagenes">Fotos</label>
+            <input type="file" id="evaluar-imagenes" multiple accept="image/jpeg,image/png,image/webp" required>
+          </div>
+          <button type="submit" class="boton">Evaluar con el CSV</button>
+        </form>
+        <form id="form-carpeta" class="opcion">
+          <h3>Opción 2: una carpeta con una subcarpeta por clase</h3>
+          <p>Cada subcarpeta se llama como la clase, por ejemplo <code>Cardboard</code> o <code>Cartón</code>. En el celular no hay selector de carpetas: usa la opción 1.</p>
+          <div class="campo">
+            <label for="evaluar-carpeta">Carpeta</label>
+            <input type="file" id="evaluar-carpeta" webkitdirectory multiple required>
+          </div>
+          <button type="submit" class="boton">Evaluar la carpeta</button>
+        </form>
+      </div>
+      <p id="evaluar-progreso" class="progreso" aria-live="polite" aria-atomic="true"></p>
+      <div id="evaluar-avisos" class="avisos-evaluacion"></div>
+      <div id="evaluar-resultados" class="resultados" hidden></div>
+    </section>
+
+    <section id="panel-acerca" class="panel prosa" role="tabpanel" aria-labelledby="pestana-acerca" tabindex="0" hidden>
+      <h2>Acerca de esta aplicación</h2>
+
+      <h3>Qué hace y para quién</h3>
+      <p>Reconoce en una foto el material de un residuo entre <span data-dato="materiales">los materiales de RealWaste</span> y lo traduce a la caneca del código de colores de la Resolución 2184 de 2019: blanca para lo aprovechable, verde para lo orgánico aprovechable y negra para lo no aprovechable. Sirve a quien quiera ver cómo se comporta un modelo de visión por computador ante este problema y medirlo con sus propias fotos etiquetadas. Es el proyecto final del curso de Visión por Computador de la Maestría en Inteligencia Artificial de la Universidad de La Salle.</p>
+
+      <h3>Cómo decide la caneca</h3>
+      <p>El modelo da una probabilidad a cada material. La aplicación suma las probabilidades de los materiales que van a cada caneca y elige la caneca con la suma más alta, así que la caneca puede quedar más segura que el material. Muestra dos avisos: «caneca dudosa», cuando la probabilidad de la caneca elegida es menor que <span data-dato="umbral-caneca">el umbral fijado</span>, y «foto lejos de lo aprendido», cuando el material más probable no llega a <span data-dato="umbral-material">el umbral fijado</span>. Los dos umbrales se fijaron antes de ver los resultados de la prueba.</p>
+      <div class="tabla-desplazable" role="region" aria-labelledby="titulo-correspondencia" tabindex="0">
+        <table id="tabla-canecas">
+          <caption id="titulo-correspondencia">Correspondencia entre materiales y canecas</caption>
+          <thead>
+            <tr><th scope="col">Material</th><th scope="col">Etiqueta en RealWaste</th><th scope="col">Caneca</th><th scope="col">Fuente</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="nota">Fuente general: <span data-dato="fuente-canecas">Resolución 2184 de 2019</span>.</p>
+
+      <h3>El modelo en la nube</h3>
+      <p>El modelo es el que ganó la evaluación del proyecto; se entrenó con el <span data-dato="descripcion-modelo">conjunto de entrenamiento elegido</span>. Está alojado en la nube de Teachable Machine, que sirve sus archivos desde Google Cloud Storage. La aplicación lo pide a su dirección pública y lo usa con la API de la librería <code>@teachablemachine/image</code>: <code>tmImage.load</code> para cargarlo y <code>predict</code> para clasificar. El modelo no viene empaquetado con la aplicación.</p>
+      <p><a id="enlace-modelo" href="https://teachablemachine.withgoogle.com/">Ver el modelo en Teachable Machine</a></p>
+
+      <h3>Límites</h3>
+      <ul>
+        <li>Es un prototipo de laboratorio, en el nivel 4 de madurez tecnológica (TRL 4): se validó con las fotos de prueba del conjunto de datos, no en uso real.</li>
+        <li>Aprendió de fotos de RealWaste, tomadas en el relleno sanitario de Whyte's Gully, en Wollongong (Australia). Las fotos de una cocina, con otro fondo y otra luz, pueden confundirlo.</li>
+        <li>Una foto no sabe si el objeto tiene grasa o restos de comida, si está contaminado o si mezcla materiales. Esos residuos pueden ir a la negra aunque su material sea aprovechable.</li>
+        <li>La caneca verde sirve si tu municipio recoge los orgánicos por una ruta selectiva. Si no la hay, sigue la indicación local.</li>
+      </ul>
+
+      <h3>Privacidad</h3>
+      <p>Las fotos no salen de tu dispositivo: la clasificación ocurre en tu navegador. Lo único que se descarga es el modelo, desde la nube de Teachable Machine, y las librerías TensorFlow.js y <code>@teachablemachine/image</code>, desde jsDelivr.</p>
+
+      <h3>Datos y licencias</h3>
+      <p>Conjunto de datos: Single, S., Iranmanesh, S., y Raad, R. (2023). <cite>RealWaste</cite> [Conjunto de datos]. UCI Machine Learning Repository. <a href="https://doi.org/10.24432/C5SS4G">https://doi.org/10.24432/C5SS4G</a></p>
+      <p>La página de UCI publica RealWaste con la licencia CC BY 4.0, pero el README de los autores, que viaja dentro de la misma descarga, dice CC BY-NC-SA 4.0. Ante ese conflicto se adopta la más restrictiva: uso académico no comercial, con atribución y sin redistribuir las imágenes. Por eso el repositorio no incluye fotos de RealWaste. El código está bajo la licencia MIT; ni las imágenes ni el modelo lo están.</p>
+
+      <h3>Enlaces</h3>
+      <ul>
+        <li><a href="https://github.com/ingJulianLasso/clasificador-residuos">Código fuente en GitHub</a></li>
+        <li><a href="https://archive.ics.uci.edu/dataset/908/realwaste">RealWaste en el repositorio de UCI</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <p>Julián Andrés Lasso Figueroa. Maestría en Inteligencia Artificial, Universidad de La Salle.</p>
+    </div>
+  </footer>
+</body>
+</html>
