@@ -1,0 +1,64 @@
+{
+  "fuente": "Resolución 2184 de 2019 del Ministerio de Ambiente y Desarrollo Sostenible, artículo 4 (código de colores para la separación de residuos en la fuente), vigente por la salvedad del artículo 26 de la Resolución 803 de 2024",
+  "canecas": {
+    "blanca": {
+      "nombre": "Caneca blanca",
+      "descripcion": "Residuos aprovechables: plástico, vidrio, metales, multicapa, papel y cartón, limpios y secos"
+    },
+    "verde": {
+      "nombre": "Caneca verde",
+      "descripcion": "Residuos orgánicos aprovechables: restos de comida y de jardinería"
+    },
+    "negra": {
+      "nombre": "Caneca negra",
+      "descripcion": "Residuos no aprovechables"
+    }
+  },
+  "materiales": {
+    "Cardboard": {
+      "nombre": "Cartón",
+      "caneca": "blanca",
+      "fuente": "Resolución 2184 de 2019, art. 4; Abecé de Minambiente (2020), p. 4 y p. 14"
+    },
+    "Food Organics": {
+      "nombre": "Orgánicos de comida",
+      "caneca": "verde",
+      "fuente": "Resolución 2184 de 2019, art. 4; Abecé de Minambiente (2020), p. 4; Guía Nacional 2022, p. 11"
+    },
+    "Glass": {
+      "nombre": "Vidrio",
+      "caneca": "blanca",
+      "fuente": "Resolución 2184 de 2019, art. 4; Abecé de Minambiente (2020), p. 4 y p. 14"
+    },
+    "Metal": {
+      "nombre": "Metal",
+      "caneca": "blanca",
+      "fuente": "Resolución 2184 de 2019, art. 4; Abecé de Minambiente (2020), p. 4 y p. 14"
+    },
+    "Miscellaneous Trash": {
+      "nombre": "Basura miscelánea",
+      "caneca": "negra",
+      "fuente": "Resolución 2184 de 2019, art. 4; Guía Nacional 2022, p. 11; asignada por exclusión"
+    },
+    "Paper": {
+      "nombre": "Papel",
+      "caneca": "blanca",
+      "fuente": "Resolución 2184 de 2019, art. 4; Abecé de Minambiente (2020), p. 4 y p. 14"
+    },
+    "Plastic": {
+      "nombre": "Plástico",
+      "caneca": "blanca",
+      "fuente": "Resolución 2184 de 2019, art. 4; Abecé de Minambiente (2020), p. 4 y p. 14"
+    },
+    "Textile Trash": {
+      "nombre": "Textiles",
+      "caneca": "blanca",
+      "fuente": "Guía Nacional 2022, p. 11 (textiles no voluminosos ni peligrosos)"
+    },
+    "Vegetation": {
+      "nombre": "Vegetación",
+      "caneca": "verde",
+      "fuente": "Guía Nacional 2022, p. 11; Observatorio Ambiental de Bogotá (2022)"
+    }
+  }
+}

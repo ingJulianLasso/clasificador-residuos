@@ -1,0 +1,133 @@
+{
+  "url": "http://127.0.0.1:8766/web/",
+  "commit": null,
+  "cambios_sin_commit": true,
+  "hora": "2026-11-19T11:33:42-05:00",
+  "navegador": "157.0.8103.79",
+  "origen_modelo": [
+    {
+      "url": "https://teachablemachine.withgoogle.com/models/9PKzru-J4/model.json",
+      "estado": 302
+    },
+    {
+      "url": "https://storage.googleapis.com/tm-model/9PKzru-J4/model.json",
+      "estado": 200
+    },
+    {
+      "url": "https://teachablemachine.withgoogle.com/models/9PKzru-J4/model.weights.bin",
+      "estado": 302
+    },
+    {
+      "url": "https://storage.googleapis.com/tm-model/9PKzru-J4/model.weights.bin",
+      "estado": 200
+    },
+    {
+      "url": "https://teachablemachine.withgoogle.com/models/9PKzru-J4/metadata.json",
+      "estado": 302
+    },
+    {
+      "url": "https://storage.googleapis.com/tm-model/9PKzru-J4/metadata.json",
+      "estado": 200
+    }
+  ],
+  "n": 1425,
+  "iguales": true,
+  "diferencia_maxima": 0.0,
+  "metricas_iguales": true,
+  "paridad": {
+    "n": 1425,
+    "n_referencia": 1425,
+    "mismos_archivos": true,
+    "mismo_material_y_caneca": 1425,
+    "diferencia_maxima": 0.0
+  },
+  "metricas": {
+    "material": {
+      "matriz_igual": true,
+      "soporte_igual": true,
+      "diferencia_auc": 1.1102230246251565e-16,
+      "diferencia_resto": 1.1102230246251565e-16,
+      "iguales": true
+    },
+    "caneca": {
+      "matriz_igual": true,
+      "soporte_igual": true,
+      "diferencia_auc": 1.1102230246251565e-16,
+      "diferencia_resto": 0.0,
+      "iguales": true
+    }
+  },
+  "segundos_evaluacion": 17.3,
+  "entorno": {
+    "libreria": "fijada",
+    "paquetes": {
+      "@tensorflow/tfjs": "1.3.1",
+      "@teachablemachine/image": "0.8.5"
+    },
+    "versiones_tfjs": {
+      "tfjs-core": "1.3.1",
+      "tfjs-data": "1.3.1",
+      "tfjs-layers": "1.3.1",
+      "tfjs-converter": "1.3.1",
+      "tfjs": "1.3.1"
+    },
+    "version_interna_tm_image": "0.8.4-alpha2",
+    "backend": "webgl",
+    "renderizador_pagina": "Brave"
+  },
+  "sin_evaluar": {
+    "no_admitidas": [],
+    "sin_etiqueta": [],
+    "clase_desconocida": [],
+    "repetidas_en_el_csv": [],
+    "ilegibles": []
+  },
+  "clasificar": {
+    "archivos": 14,
+    "tarjetas": 12,
+    "errores": 2,
+    "filas_csv": 12,
+    "iguales_a_la_evaluacion": 12
+  },
+  "desplazamiento_horizontal_px": {
+    "celular 390 px, clasificar": 0,
+    "celular 390 px, evaluar": 0,
+    "celular 390 px, acerca": 0,
+    "estrecho 320 px, clasificar": 0,
+    "estrecho 320 px, evaluar": 0,
+    "estrecho 320 px, acerca": 0
+  },
+  "axe": {
+    "version": "4.10.2",
+    "clasificar": {
+      "escritorio": {
+        "serias_o_criticas": 0,
+        "violaciones": []
+      },
+      "celular": {
+        "serias_o_criticas": 0,
+        "violaciones": []
+      }
+    },
+    "evaluar": {
+      "escritorio": {
+        "serias_o_criticas": 0,
+        "violaciones": []
+      },
+      "celular": {
+        "serias_o_criticas": 0,
+        "violaciones": []
+      }
+    },
+    "acerca": {
+      "escritorio": {
+        "serias_o_criticas": 0,
+        "violaciones": []
+      },
+      "celular": {
+        "serias_o_criticas": 0,
+        "violaciones": []
+      }
+    }
+  }
+}

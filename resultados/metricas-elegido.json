@@ -1,0 +1,1320 @@
+{
+  "modelo": "entrenamiento_2, cargado desde https://teachablemachine.withgoogle.com/models/9PKzru-J4/",
+  "csv": "resultados/probabilidades-prueba-elegido.csv",
+  "imagenes": 1425,
+  "bootstrap": {
+    "remuestreos": 1000,
+    "semilla": 42,
+    "nivel": 0.95,
+    "metodo": "percentil",
+    "remuestreo": "simple, con reemplazo, de las imágenes de prueba; los mismos índices para todas las métricas de un modelo"
+  },
+  "verificacion": {
+    "filas": 1425,
+    "una_fila_por_imagen_de_prueba": true,
+    "desviacion_maxima_de_la_suma": 1.034735720328861e-06,
+    "suman_uno": true,
+    "caneca_igual_a_python": true,
+    "diferencia_maxima_prob_caneca": 0.0,
+    "valido": true
+  },
+  "material": {
+    "clases": [
+      "Cardboard",
+      "Food Organics",
+      "Glass",
+      "Metal",
+      "Miscellaneous Trash",
+      "Paper",
+      "Plastic",
+      "Textile Trash",
+      "Vegetation"
+    ],
+    "matriz": [
+      [
+        111,
+        0,
+        1,
+        2,
+        4,
+        15,
+        5,
+        0,
+        0
+      ],
+      [
+        1,
+        115,
+        0,
+        0,
+        2,
+        0,
+        1,
+        2,
+        2
+      ],
+      [
+        3,
+        0,
+        106,
+        8,
+        1,
+        0,
+        8,
+        0,
+        0
+      ],
+      [
+        8,
+        1,
+        14,
+        171,
+        12,
+        11,
+        14,
+        6,
+        0
+      ],
+      [
+        5,
+        3,
+        5,
+        4,
+        104,
+        10,
+        7,
+        10,
+        1
+      ],
+      [
+        14,
+        0,
+        1,
+        2,
+        0,
+        123,
+        3,
+        7,
+        0
+      ],
+      [
+        8,
+        3,
+        28,
+        23,
+        14,
+        9,
+        183,
+        8,
+        0
+      ],
+      [
+        2,
+        2,
+        0,
+        1,
+        1,
+        6,
+        0,
+        83,
+        0
+      ],
+      [
+        0,
+        5,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        124
+      ]
+    ],
+    "soporte": {
+      "Cardboard": 138,
+      "Food Organics": 123,
+      "Glass": 126,
+      "Metal": 237,
+      "Miscellaneous Trash": 149,
+      "Paper": 150,
+      "Plastic": 276,
+      "Textile Trash": 95,
+      "Vegetation": 131
+    },
+    "valores": {
+      "precision.Cardboard": 0.7302631578947368,
+      "precision.Food Organics": 0.8914728682170543,
+      "precision.Glass": 0.6838709677419355,
+      "precision.Metal": 0.8104265402843602,
+      "precision.Miscellaneous Trash": 0.7482014388489209,
+      "precision.Paper": 0.7028571428571428,
+      "precision.Plastic": 0.8280542986425339,
+      "precision.Textile Trash": 0.7155172413793104,
+      "precision.Vegetation": 0.9763779527559056,
+      "recall.Cardboard": 0.8043478260869565,
+      "recall.Food Organics": 0.9349593495934959,
+      "recall.Glass": 0.8412698412698413,
+      "recall.Metal": 0.7215189873417721,
+      "recall.Miscellaneous Trash": 0.697986577181208,
+      "recall.Paper": 0.82,
+      "recall.Plastic": 0.6630434782608695,
+      "recall.Textile Trash": 0.8736842105263158,
+      "recall.Vegetation": 0.9465648854961832,
+      "f1.Cardboard": 0.7655172413793104,
+      "f1.Food Organics": 0.9126984126984128,
+      "f1.Glass": 0.7544483985765126,
+      "f1.Metal": 0.7633928571428571,
+      "f1.Miscellaneous Trash": 0.7222222222222221,
+      "f1.Paper": 0.7569230769230769,
+      "f1.Plastic": 0.7364185110663984,
+      "f1.Textile Trash": 0.7867298578199051,
+      "f1.Vegetation": 0.9612403100775194,
+      "exactitud": 0.7859649122807018,
+      "exactitud_balanceada": 0.8114861284174048,
+      "precision_macro": 0.7874490676246556,
+      "recall_macro": 0.8114861284174048,
+      "f1_macro": 0.7955100986562462,
+      "precision_ponderada": 0.7929821281035135,
+      "recall_ponderado": 0.7859649122807016,
+      "f1_ponderado": 0.7852286233352224,
+      "auc.Cardboard": 0.9783059130885219,
+      "auc.Food Organics": 0.994967092528068,
+      "auc.Glass": 0.9817625279519043,
+      "auc.Metal": 0.9644156047109633,
+      "auc.Miscellaneous Trash": 0.9433317203509288,
+      "auc.Paper": 0.9785856209150327,
+      "auc.Plastic": 0.9371413075011669,
+      "auc.Textile Trash": 0.9835377918480411,
+      "auc.Vegetation": 0.9948558821100322,
+      "ap.Cardboard": 0.8601576978561334,
+      "ap.Food Organics": 0.9351296609421416,
+      "ap.Glass": 0.8630295376146292,
+      "ap.Metal": 0.8770972797816387,
+      "ap.Miscellaneous Trash": 0.785265673171914,
+      "ap.Paper": 0.8568926462144484,
+      "ap.Plastic": 0.8347300803779895,
+      "ap.Textile Trash": 0.8345507516093419,
+      "ap.Vegetation": 0.9881410515480611,
+      "auc_macro": 0.9729892734449622,
+      "auc_micro": 0.972383594952293,
+      "ap_macro": 0.8705549310129219,
+      "ap_micro": 0.8649848697000447
+    },
+    "intervalos": {
+      "precision.Cardboard": [
+        0.6564319487319761,
+        0.7972995053877406
+      ],
+      "precision.Food Organics": [
+        0.8333333333333334,
+        0.9461742424242424
+      ],
+      "precision.Glass": [
+        0.6077985739750446,
+        0.7515215989684074
+      ],
+      "precision.Metal": [
+        0.7544398878737542,
+        0.8643385678391959
+      ],
+      "precision.Miscellaneous Trash": [
+        0.677608082706767,
+        0.8188139509296952
+      ],
+      "precision.Paper": [
+        0.6358381502890174,
+        0.7692424242424243
+      ],
+      "precision.Plastic": [
+        0.7727223956301209,
+        0.8750134120171674
+      ],
+      "precision.Textile Trash": [
+        0.6315661727133367,
+        0.7966468383311603
+      ],
+      "precision.Vegetation": [
+        0.947703818369453,
+        1.0
+      ],
+      "recall.Cardboard": [
+        0.7404580152671756,
+        0.8692391304347826
+      ],
+      "recall.Food Organics": [
+        0.8938006025230653,
+        0.9745816123059393
+      ],
+      "recall.Glass": [
+        0.774590633230276,
+        0.9021148989898989
+      ],
+      "recall.Metal": [
+        0.6666299559471366,
+        0.7793545677736142
+      ],
+      "recall.Miscellaneous Trash": [
+        0.624957191780822,
+        0.7697446689113355
+      ],
+      "recall.Paper": [
+        0.7557997235322816,
+        0.8830663615560641
+      ],
+      "recall.Plastic": [
+        0.6058342757273569,
+        0.7137681159420289
+      ],
+      "recall.Textile Trash": [
+        0.8064433838051349,
+        0.9355010295126972
+      ],
+      "recall.Vegetation": [
+        0.9022556390977443,
+        0.983739837398374
+      ],
+      "f1.Cardboard": [
+        0.7074726860441145,
+        0.8170941026574444
+      ],
+      "f1.Food Organics": [
+        0.8755341896659691,
+        0.9461559139784947
+      ],
+      "f1.Glass": [
+        0.6950103207367418,
+        0.8051305457056255
+      ],
+      "f1.Metal": [
+        0.7203483916507009,
+        0.8056755695208169
+      ],
+      "f1.Miscellaneous Trash": [
+        0.6686605316973415,
+        0.7794233259341473
+      ],
+      "f1.Paper": [
+        0.6999836601307189,
+        0.8034749608340986
+      ],
+      "f1.Plastic": [
+        0.6907545549682025,
+        0.7746052547973058
+      ],
+      "f1.Textile Trash": [
+        0.7229988843954818,
+        0.8426605605826528
+      ],
+      "f1.Vegetation": [
+        0.9338112745098038,
+        0.9829059829059829
+      ],
+      "exactitud": [
+        0.7649122807017544,
+        0.8063157894736842
+      ],
+      "exactitud_balanceada": [
+        0.7931123443916114,
+        0.8293255231057466
+      ],
+      "precision_macro": [
+        0.7681364001947316,
+        0.8061248197805891
+      ],
+      "recall_macro": [
+        0.7931123443916114,
+        0.8293255231057466
+      ],
+      "f1_macro": [
+        0.775871500236603,
+        0.813174526508379
+      ],
+      "precision_ponderada": [
+        0.7742739553374127,
+        0.8134456236176756
+      ],
+      "recall_ponderado": [
+        0.7649122807017544,
+        0.8063157894736842
+      ],
+      "f1_ponderado": [
+        0.7646623896482615,
+        0.8056699209439083
+      ],
+      "auc.Cardboard": [
+        0.968937551747544,
+        0.9856042380198551
+      ],
+      "auc.Food Organics": [
+        0.991503251068313,
+        0.9978354090856493
+      ],
+      "auc.Glass": [
+        0.9737071419016193,
+        0.9881764955269327
+      ],
+      "auc.Metal": [
+        0.9526546506043575,
+        0.9746461917562724
+      ],
+      "auc.Miscellaneous Trash": [
+        0.9236413960552736,
+        0.9636685761752641
+      ],
+      "auc.Paper": [
+        0.9705633283268009,
+        0.9853992598059298
+      ],
+      "auc.Plastic": [
+        0.9202241699727904,
+        0.9507895916029664
+      ],
+      "auc.Textile Trash": [
+        0.975092428650831,
+        0.9907816165584873
+      ],
+      "auc.Vegetation": [
+        0.9841248463843277,
+        0.9997972369150228
+      ],
+      "ap.Cardboard": [
+        0.8091864484574399,
+        0.9039347223440145
+      ],
+      "ap.Food Organics": [
+        0.8816094738003645,
+        0.9778909317583029
+      ],
+      "ap.Glass": [
+        0.8112908995282854,
+        0.9059143153209935
+      ],
+      "ap.Metal": [
+        0.8445804235807721,
+        0.9088180802674348
+      ],
+      "ap.Miscellaneous Trash": [
+        0.7325358491368834,
+        0.8402164971763848
+      ],
+      "ap.Paper": [
+        0.8033386936649286,
+        0.9027068842284613
+      ],
+      "ap.Plastic": [
+        0.7938838091674335,
+        0.8678023611300417
+      ],
+      "ap.Textile Trash": [
+        0.7639609178661264,
+        0.8968105492272438
+      ],
+      "ap.Vegetation": [
+        0.9716059154322829,
+        0.9979327434352362
+      ],
+      "auc_macro": [
+        0.9686190970753007,
+        0.9772104740392196
+      ],
+      "auc_micro": [
+        0.9677443274853801,
+        0.9768186018775008
+      ],
+      "ap_macro": [
+        0.8533484114459571,
+        0.8880503639927542
+      ],
+      "ap_micro": [
+        0.8472998352601016,
+        0.8829036039711894
+      ]
+    }
+  },
+  "caneca": {
+    "clases": [
+      "blanca",
+      "verde",
+      "negra"
+    ],
+    "matriz": [
+      [
+        987,
+        6,
+        29
+      ],
+      [
+        5,
+        247,
+        2
+      ],
+      [
+        41,
+        4,
+        104
+      ]
+    ],
+    "soporte": {
+      "blanca": 1022,
+      "verde": 254,
+      "negra": 149
+    },
+    "valores": {
+      "precision.blanca": 0.9554695062923524,
+      "precision.verde": 0.9610894941634242,
+      "precision.negra": 0.7703703703703704,
+      "recall.blanca": 0.9657534246575342,
+      "recall.verde": 0.9724409448818898,
+      "recall.negra": 0.697986577181208,
+      "f1.blanca": 0.9605839416058394,
+      "f1.verde": 0.9667318982387475,
+      "f1.negra": 0.7323943661971831,
+      "exactitud": 0.9389473684210526,
+      "exactitud_balanceada": 0.8787269822402107,
+      "precision_macro": 0.8956431236087156,
+      "recall_macro": 0.8787269822402107,
+      "f1_macro": 0.88657006868059,
+      "precision_ponderada": 0.937117019041038,
+      "recall_ponderado": 0.9389473684210528,
+      "f1_ponderado": 0.9378199656401334,
+      "auc.blanca": 0.9764947822835582,
+      "auc.verde": 0.9978180033217453,
+      "auc.negra": 0.9433317203509288,
+      "ap.blanca": 0.9890638070801492,
+      "ap.verde": 0.9898087022823442,
+      "ap.negra": 0.785265673171914,
+      "auc_macro": 0.9725481686520775,
+      "auc_micro": 0.9887514927670051,
+      "ap_macro": 0.9213793941781359,
+      "ap_micro": 0.9792835084619362
+    },
+    "intervalos": {
+      "precision.blanca": [
+        0.9425218213799741,
+        0.9675904899469709
+      ],
+      "precision.verde": [
+        0.9359928571428572,
+        0.9833451417004048
+      ],
+      "precision.negra": [
+        0.7036514336917563,
+        0.8389384215940822
+      ],
+      "recall.blanca": [
+        0.9540409590409591,
+        0.9775856540359573
+      ],
+      "recall.verde": [
+        0.9511993549687563,
+        0.9914539007092199
+      ],
+      "recall.negra": [
+        0.624957191780822,
+        0.7697446689113355
+      ],
+      "f1.blanca": [
+        0.9522324830992467,
+        0.9692454876619638
+      ],
+      "f1.verde": [
+        0.9498974783543922,
+        0.9812051568630515
+      ],
+      "f1.negra": [
+        0.6763610202746894,
+        0.7875018356094892
+      ],
+      "exactitud": [
+        0.9270175438596491,
+        0.9508771929824561
+      ],
+      "exactitud_balanceada": [
+        0.8527367909783672,
+        0.9046756421503553
+      ],
+      "precision_macro": [
+        0.8721359921804754,
+        0.91975334358463
+      ],
+      "recall_macro": [
+        0.8527367909783672,
+        0.9046756421503553
+      ],
+      "f1_macro": [
+        0.8645077705106884,
+        0.9077731891133366
+      ],
+      "precision_ponderada": [
+        0.9246549578843486,
+        0.9497984220934618
+      ],
+      "recall_ponderado": [
+        0.9270175438596491,
+        0.9508771929824561
+      ],
+      "f1_ponderado": [
+        0.925398028659333,
+        0.9498639508837708
+      ],
+      "auc.blanca": [
+        0.9686149578402145,
+        0.9842330640200074
+      ],
+      "auc.verde": [
+        0.9961579889539643,
+        0.999151824869208
+      ],
+      "auc.negra": [
+        0.9236413960552736,
+        0.9636685761752641
+      ],
+      "ap.blanca": [
+        0.9843570362524001,
+        0.9932425077753907
+      ],
+      "ap.verde": [
+        0.9820913492168005,
+        0.9960763203163813
+      ],
+      "ap.negra": [
+        0.7325358491368834,
+        0.8402164971763848
+      ],
+      "auc_macro": [
+        0.9637208799397968,
+        0.9816005799836293
+      ],
+      "auc_micro": [
+        0.985173216374269,
+        0.9921564358264082
+      ],
+      "ap_macro": [
+        0.9026488162373133,
+        0.9414428135487825
+      ],
+      "ap_micro": [
+        0.973102946496542,
+        0.98529607235336
+      ]
+    }
+  },
+  "caneca_vs_material_mas_probable": {
+    "difieren": 4,
+    "exactitud_suma": 0.9389473684210526,
+    "exactitud_material": 0.9361403508771929,
+    "aciertos_solo_suma": 4,
+    "aciertos_solo_material": 0
+  },
+  "errores": {
+    "material": 305,
+    "material_con_caneca_correcta": 218,
+    "caneca": 87,
+    "contaminan_la_blanca": 46,
+    "organicos_en_la_blanca": 5,
+    "no_aprovechables_en_la_blanca": 41,
+    "aprovechables_perdidos_en_la_negra": 29,
+    "pares_mas_confundidos": [
+      {
+        "real": "Plastic",
+        "predicho": "Glass",
+        "imagenes": 28
+      },
+      {
+        "real": "Plastic",
+        "predicho": "Metal",
+        "imagenes": 23
+      },
+      {
+        "real": "Cardboard",
+        "predicho": "Paper",
+        "imagenes": 15
+      },
+      {
+        "real": "Metal",
+        "predicho": "Glass",
+        "imagenes": 14
+      },
+      {
+        "real": "Metal",
+        "predicho": "Plastic",
+        "imagenes": 14
+      }
+    ]
+  },
+  "elegido": "entrenamiento_2",
+  "cobertura_blanca": {
+    "definicion": "Entre las imágenes que el modelo manda a la blanca, se conservan las que tienen probabilidad de blanca igual o mayor que el umbral; cobertura es la fracción conservada, precisión la fracción de ellas que de verdad es blanca y recall la fracción de las blancas reales que se conserva.",
+    "sin_abstencion": {
+      "umbral": null,
+      "imagenes": 1033,
+      "cobertura": 1.0,
+      "precision": 0.9554695062923524,
+      "recall": 0.9657534246575342,
+      "contaminantes": 46
+    },
+    "puntos": [
+      {
+        "umbral": 0.35,
+        "imagenes": 1033,
+        "cobertura": 1.0,
+        "precision": 0.9554695062923524,
+        "recall": 0.9657534246575342,
+        "contaminantes": 46
+      },
+      {
+        "umbral": 0.36,
+        "imagenes": 1033,
+        "cobertura": 1.0,
+        "precision": 0.9554695062923524,
+        "recall": 0.9657534246575342,
+        "contaminantes": 46
+      },
+      {
+        "umbral": 0.37,
+        "imagenes": 1033,
+        "cobertura": 1.0,
+        "precision": 0.9554695062923524,
+        "recall": 0.9657534246575342,
+        "contaminantes": 46
+      },
+      {
+        "umbral": 0.38,
+        "imagenes": 1033,
+        "cobertura": 1.0,
+        "precision": 0.9554695062923524,
+        "recall": 0.9657534246575342,
+        "contaminantes": 46
+      },
+      {
+        "umbral": 0.39,
+        "imagenes": 1033,
+        "cobertura": 1.0,
+        "precision": 0.9554695062923524,
+        "recall": 0.9657534246575342,
+        "contaminantes": 46
+      },
+      {
+        "umbral": 0.4,
+        "imagenes": 1033,
+        "cobertura": 1.0,
+        "precision": 0.9554695062923524,
+        "recall": 0.9657534246575342,
+        "contaminantes": 46
+      },
+      {
+        "umbral": 0.41,
+        "imagenes": 1033,
+        "cobertura": 1.0,
+        "precision": 0.9554695062923524,
+        "recall": 0.9657534246575342,
+        "contaminantes": 46
+      },
+      {
+        "umbral": 0.42,
+        "imagenes": 1032,
+        "cobertura": 0.9990319457889641,
+        "precision": 0.9563953488372093,
+        "recall": 0.9657534246575342,
+        "contaminantes": 45
+      },
+      {
+        "umbral": 0.43,
+        "imagenes": 1031,
+        "cobertura": 0.9980638915779284,
+        "precision": 0.9573229873908826,
+        "recall": 0.9657534246575342,
+        "contaminantes": 44
+      },
+      {
+        "umbral": 0.44,
+        "imagenes": 1031,
+        "cobertura": 0.9980638915779284,
+        "precision": 0.9573229873908826,
+        "recall": 0.9657534246575342,
+        "contaminantes": 44
+      },
+      {
+        "umbral": 0.45,
+        "imagenes": 1031,
+        "cobertura": 0.9980638915779284,
+        "precision": 0.9573229873908826,
+        "recall": 0.9657534246575342,
+        "contaminantes": 44
+      },
+      {
+        "umbral": 0.46,
+        "imagenes": 1031,
+        "cobertura": 0.9980638915779284,
+        "precision": 0.9573229873908826,
+        "recall": 0.9657534246575342,
+        "contaminantes": 44
+      },
+      {
+        "umbral": 0.47,
+        "imagenes": 1031,
+        "cobertura": 0.9980638915779284,
+        "precision": 0.9573229873908826,
+        "recall": 0.9657534246575342,
+        "contaminantes": 44
+      },
+      {
+        "umbral": 0.48,
+        "imagenes": 1031,
+        "cobertura": 0.9980638915779284,
+        "precision": 0.9573229873908826,
+        "recall": 0.9657534246575342,
+        "contaminantes": 44
+      },
+      {
+        "umbral": 0.49,
+        "imagenes": 1031,
+        "cobertura": 0.9980638915779284,
+        "precision": 0.9573229873908826,
+        "recall": 0.9657534246575342,
+        "contaminantes": 44
+      },
+      {
+        "umbral": 0.5,
+        "imagenes": 1030,
+        "cobertura": 0.9970958373668926,
+        "precision": 0.958252427184466,
+        "recall": 0.9657534246575342,
+        "contaminantes": 43
+      },
+      {
+        "umbral": 0.51,
+        "imagenes": 1029,
+        "cobertura": 0.9961277831558567,
+        "precision": 0.9582118561710399,
+        "recall": 0.9647749510763209,
+        "contaminantes": 43
+      },
+      {
+        "umbral": 0.52,
+        "imagenes": 1027,
+        "cobertura": 0.9941916747337851,
+        "precision": 0.9581304771178188,
+        "recall": 0.9628180039138943,
+        "contaminantes": 43
+      },
+      {
+        "umbral": 0.53,
+        "imagenes": 1027,
+        "cobertura": 0.9941916747337851,
+        "precision": 0.9581304771178188,
+        "recall": 0.9628180039138943,
+        "contaminantes": 43
+      },
+      {
+        "umbral": 0.54,
+        "imagenes": 1026,
+        "cobertura": 0.9932236205227493,
+        "precision": 0.9590643274853801,
+        "recall": 0.9628180039138943,
+        "contaminantes": 42
+      },
+      {
+        "umbral": 0.55,
+        "imagenes": 1025,
+        "cobertura": 0.9922555663117134,
+        "precision": 0.96,
+        "recall": 0.9628180039138943,
+        "contaminantes": 41
+      },
+      {
+        "umbral": 0.56,
+        "imagenes": 1024,
+        "cobertura": 0.9912875121006777,
+        "precision": 0.9599609375,
+        "recall": 0.961839530332681,
+        "contaminantes": 41
+      },
+      {
+        "umbral": 0.57,
+        "imagenes": 1022,
+        "cobertura": 0.989351403678606,
+        "precision": 0.9598825831702544,
+        "recall": 0.9598825831702544,
+        "contaminantes": 41
+      },
+      {
+        "umbral": 0.58,
+        "imagenes": 1020,
+        "cobertura": 0.9874152952565344,
+        "precision": 0.9598039215686275,
+        "recall": 0.9579256360078278,
+        "contaminantes": 41
+      },
+      {
+        "umbral": 0.59,
+        "imagenes": 1020,
+        "cobertura": 0.9874152952565344,
+        "precision": 0.9598039215686275,
+        "recall": 0.9579256360078278,
+        "contaminantes": 41
+      },
+      {
+        "umbral": 0.6,
+        "imagenes": 1020,
+        "cobertura": 0.9874152952565344,
+        "precision": 0.9598039215686275,
+        "recall": 0.9579256360078278,
+        "contaminantes": 41
+      },
+      {
+        "umbral": 0.61,
+        "imagenes": 1020,
+        "cobertura": 0.9874152952565344,
+        "precision": 0.9598039215686275,
+        "recall": 0.9579256360078278,
+        "contaminantes": 41
+      },
+      {
+        "umbral": 0.62,
+        "imagenes": 1019,
+        "cobertura": 0.9864472410454985,
+        "precision": 0.9597644749754661,
+        "recall": 0.9569471624266145,
+        "contaminantes": 41
+      },
+      {
+        "umbral": 0.63,
+        "imagenes": 1017,
+        "cobertura": 0.9845111326234269,
+        "precision": 0.95968534906588,
+        "recall": 0.9549902152641878,
+        "contaminantes": 41
+      },
+      {
+        "umbral": 0.64,
+        "imagenes": 1017,
+        "cobertura": 0.9845111326234269,
+        "precision": 0.95968534906588,
+        "recall": 0.9549902152641878,
+        "contaminantes": 41
+      },
+      {
+        "umbral": 0.65,
+        "imagenes": 1016,
+        "cobertura": 0.9835430784123911,
+        "precision": 0.9606299212598425,
+        "recall": 0.9549902152641878,
+        "contaminantes": 40
+      },
+      {
+        "umbral": 0.66,
+        "imagenes": 1016,
+        "cobertura": 0.9835430784123911,
+        "precision": 0.9606299212598425,
+        "recall": 0.9549902152641878,
+        "contaminantes": 40
+      },
+      {
+        "umbral": 0.67,
+        "imagenes": 1015,
+        "cobertura": 0.9825750242013552,
+        "precision": 0.9605911330049262,
+        "recall": 0.9540117416829745,
+        "contaminantes": 40
+      },
+      {
+        "umbral": 0.68,
+        "imagenes": 1015,
+        "cobertura": 0.9825750242013552,
+        "precision": 0.9605911330049262,
+        "recall": 0.9540117416829745,
+        "contaminantes": 40
+      },
+      {
+        "umbral": 0.69,
+        "imagenes": 1012,
+        "cobertura": 0.9796708615682478,
+        "precision": 0.9604743083003953,
+        "recall": 0.9510763209393346,
+        "contaminantes": 40
+      },
+      {
+        "umbral": 0.7,
+        "imagenes": 1011,
+        "cobertura": 0.978702807357212,
+        "precision": 0.960435212660732,
+        "recall": 0.9500978473581213,
+        "contaminantes": 40
+      },
+      {
+        "umbral": 0.71,
+        "imagenes": 1011,
+        "cobertura": 0.978702807357212,
+        "precision": 0.960435212660732,
+        "recall": 0.9500978473581213,
+        "contaminantes": 40
+      },
+      {
+        "umbral": 0.72,
+        "imagenes": 1009,
+        "cobertura": 0.9767666989351403,
+        "precision": 0.9603567888999008,
+        "recall": 0.9481409001956947,
+        "contaminantes": 40
+      },
+      {
+        "umbral": 0.73,
+        "imagenes": 1008,
+        "cobertura": 0.9757986447241046,
+        "precision": 0.9613095238095238,
+        "recall": 0.9481409001956947,
+        "contaminantes": 39
+      },
+      {
+        "umbral": 0.74,
+        "imagenes": 1008,
+        "cobertura": 0.9757986447241046,
+        "precision": 0.9613095238095238,
+        "recall": 0.9481409001956947,
+        "contaminantes": 39
+      },
+      {
+        "umbral": 0.75,
+        "imagenes": 1007,
+        "cobertura": 0.9748305905130688,
+        "precision": 0.9612711022840119,
+        "recall": 0.9471624266144814,
+        "contaminantes": 39
+      },
+      {
+        "umbral": 0.76,
+        "imagenes": 1003,
+        "cobertura": 0.9709583736689255,
+        "precision": 0.9621136590229312,
+        "recall": 0.9442270058708415,
+        "contaminantes": 38
+      },
+      {
+        "umbral": 0.77,
+        "imagenes": 1001,
+        "cobertura": 0.9690222652468539,
+        "precision": 0.9630369630369631,
+        "recall": 0.9432485322896281,
+        "contaminantes": 37
+      },
+      {
+        "umbral": 0.78,
+        "imagenes": 999,
+        "cobertura": 0.9670861568247822,
+        "precision": 0.9629629629629629,
+        "recall": 0.9412915851272016,
+        "contaminantes": 37
+      },
+      {
+        "umbral": 0.79,
+        "imagenes": 999,
+        "cobertura": 0.9670861568247822,
+        "precision": 0.9629629629629629,
+        "recall": 0.9412915851272016,
+        "contaminantes": 37
+      },
+      {
+        "umbral": 0.8,
+        "imagenes": 996,
+        "cobertura": 0.9641819941916747,
+        "precision": 0.9658634538152611,
+        "recall": 0.9412915851272016,
+        "contaminantes": 34
+      },
+      {
+        "umbral": 0.81,
+        "imagenes": 994,
+        "cobertura": 0.9622458857696031,
+        "precision": 0.96579476861167,
+        "recall": 0.9393346379647749,
+        "contaminantes": 34
+      },
+      {
+        "umbral": 0.82,
+        "imagenes": 990,
+        "cobertura": 0.9583736689254598,
+        "precision": 0.9656565656565657,
+        "recall": 0.9354207436399217,
+        "contaminantes": 34
+      },
+      {
+        "umbral": 0.83,
+        "imagenes": 988,
+        "cobertura": 0.9564375605033882,
+        "precision": 0.9655870445344129,
+        "recall": 0.9334637964774951,
+        "contaminantes": 34
+      },
+      {
+        "umbral": 0.84,
+        "imagenes": 984,
+        "cobertura": 0.952565343659245,
+        "precision": 0.9664634146341463,
+        "recall": 0.9305283757338552,
+        "contaminantes": 33
+      },
+      {
+        "umbral": 0.85,
+        "imagenes": 983,
+        "cobertura": 0.9515972894482091,
+        "precision": 0.9674465920651069,
+        "recall": 0.9305283757338552,
+        "contaminantes": 32
+      },
+      {
+        "umbral": 0.86,
+        "imagenes": 978,
+        "cobertura": 0.9467570183930301,
+        "precision": 0.9703476482617587,
+        "recall": 0.9285714285714286,
+        "contaminantes": 29
+      },
+      {
+        "umbral": 0.87,
+        "imagenes": 977,
+        "cobertura": 0.9457889641819942,
+        "precision": 0.970317297850563,
+        "recall": 0.9275929549902152,
+        "contaminantes": 29
+      },
+      {
+        "umbral": 0.88,
+        "imagenes": 972,
+        "cobertura": 0.9409486931268151,
+        "precision": 0.9711934156378601,
+        "recall": 0.923679060665362,
+        "contaminantes": 28
+      },
+      {
+        "umbral": 0.89,
+        "imagenes": 969,
+        "cobertura": 0.9380445304937076,
+        "precision": 0.9721362229102167,
+        "recall": 0.9217221135029354,
+        "contaminantes": 27
+      },
+      {
+        "umbral": 0.9,
+        "imagenes": 964,
+        "cobertura": 0.9332042594385286,
+        "precision": 0.9730290456431535,
+        "recall": 0.9178082191780822,
+        "contaminantes": 26
+      },
+      {
+        "umbral": 0.91,
+        "imagenes": 959,
+        "cobertura": 0.9283639883833494,
+        "precision": 0.9739311783107404,
+        "recall": 0.913894324853229,
+        "contaminantes": 25
+      },
+      {
+        "umbral": 0.92,
+        "imagenes": 952,
+        "cobertura": 0.9215876089060987,
+        "precision": 0.9737394957983193,
+        "recall": 0.9070450097847358,
+        "contaminantes": 25
+      },
+      {
+        "umbral": 0.93,
+        "imagenes": 950,
+        "cobertura": 0.9196515004840271,
+        "precision": 0.9736842105263158,
+        "recall": 0.9050880626223092,
+        "contaminantes": 25
+      },
+      {
+        "umbral": 0.94,
+        "imagenes": 944,
+        "cobertura": 0.9138431752178122,
+        "precision": 0.9735169491525424,
+        "recall": 0.8992172211350293,
+        "contaminantes": 25
+      },
+      {
+        "umbral": 0.95,
+        "imagenes": 941,
+        "cobertura": 0.9109390125847048,
+        "precision": 0.973432518597237,
+        "recall": 0.8962818003913894,
+        "contaminantes": 25
+      },
+      {
+        "umbral": 0.96,
+        "imagenes": 935,
+        "cobertura": 0.9051306873184899,
+        "precision": 0.9743315508021391,
+        "recall": 0.8913894324853229,
+        "contaminantes": 24
+      },
+      {
+        "umbral": 0.97,
+        "imagenes": 923,
+        "cobertura": 0.89351403678606,
+        "precision": 0.9794149512459371,
+        "recall": 0.8845401174168297,
+        "contaminantes": 19
+      },
+      {
+        "umbral": 0.98,
+        "imagenes": 907,
+        "cobertura": 0.8780251694094869,
+        "precision": 0.9790518191841234,
+        "recall": 0.8688845401174168,
+        "contaminantes": 19
+      },
+      {
+        "umbral": 0.99,
+        "imagenes": 868,
+        "cobertura": 0.8402710551790901,
+        "precision": 0.9827188940092166,
+        "recall": 0.8346379647749511,
+        "contaminantes": 15
+      }
+    ]
+  },
+  "errores_mas_confiados": [
+    {
+      "archivo": "Vegetation/Vegetation_345.jpg",
+      "real": "Vegetation",
+      "predicho": "Food Organics",
+      "confianza": 1.0,
+      "caneca_real": "verde",
+      "caneca_predicha": "verde"
+    },
+    {
+      "archivo": "Plastic/Plastic_788.jpg",
+      "real": "Plastic",
+      "predicho": "Textile Trash",
+      "confianza": 0.9999942183494568,
+      "caneca_real": "blanca",
+      "caneca_predicha": "blanca"
+    },
+    {
+      "archivo": "Miscellaneous Trash/Miscellaneous Trash_347.jpg",
+      "real": "Miscellaneous Trash",
+      "predicho": "Paper",
+      "confianza": 0.9999885559082031,
+      "caneca_real": "negra",
+      "caneca_predicha": "blanca"
+    },
+    {
+      "archivo": "Miscellaneous Trash/Miscellaneous Trash_174.jpg",
+      "real": "Miscellaneous Trash",
+      "predicho": "Textile Trash",
+      "confianza": 0.9999856352806091,
+      "caneca_real": "negra",
+      "caneca_predicha": "blanca"
+    },
+    {
+      "archivo": "Metal/Metal_424.jpg",
+      "real": "Metal",
+      "predicho": "Textile Trash",
+      "confianza": 0.9999589920043945,
+      "caneca_real": "blanca",
+      "caneca_predicha": "blanca"
+    },
+    {
+      "archivo": "Miscellaneous Trash/Miscellaneous Trash_198.jpg",
+      "real": "Miscellaneous Trash",
+      "predicho": "Textile Trash",
+      "confianza": 0.9999570846557617,
+      "caneca_real": "negra",
+      "caneca_predicha": "blanca"
+    },
+    {
+      "archivo": "Miscellaneous Trash/Miscellaneous Trash_192.jpg",
+      "real": "Miscellaneous Trash",
+      "predicho": "Textile Trash",
+      "confianza": 0.9999561309814453,
+      "caneca_real": "negra",
+      "caneca_predicha": "blanca"
+    },
+    {
+      "archivo": "Metal/Metal_403.jpg",
+      "real": "Metal",
+      "predicho": "Paper",
+      "confianza": 0.9999494552612305,
+      "caneca_real": "blanca",
+      "caneca_predicha": "blanca"
+    },
+    {
+      "archivo": "Plastic/Plastic_520.jpg",
+      "real": "Plastic",
+      "predicho": "Glass",
+      "confianza": 0.99993896484375,
+      "caneca_real": "blanca",
+      "caneca_predicha": "blanca"
+    },
+    {
+      "archivo": "Plastic/Plastic_669.jpg",
+      "real": "Plastic",
+      "predicho": "Glass",
+      "confianza": 0.9998817443847656,
+      "caneca_real": "blanca",
+      "caneca_predicha": "blanca"
+    },
+    {
+      "archivo": "Plastic/Plastic_479.jpg",
+      "real": "Plastic",
+      "predicho": "Food Organics",
+      "confianza": 0.9998569488525391,
+      "caneca_real": "blanca",
+      "caneca_predicha": "verde"
+    },
+    {
+      "archivo": "Metal/Metal_238.jpg",
+      "real": "Metal",
+      "predicho": "Cardboard",
+      "confianza": 0.9997873902320862,
+      "caneca_real": "blanca",
+      "caneca_predicha": "blanca"
+    }
+  ],
+  "comparacion_entrenamientos": {
+    "csv_entrenamiento_1": "resultados/probabilidades-entrenamiento-1.csv",
+    "csv_entrenamiento_2": "resultados/probabilidades-prueba-elegido.csv",
+    "parametros_mcnemar": {
+      "prueba": "McNemar exacta: binomial bilateral sobre los pares discordantes con p = 0,5",
+      "alfa": 0.05,
+      "b": "aciertos del entrenamiento 1 que el entrenamiento 2 falla",
+      "c": "aciertos del entrenamiento 2 que el entrenamiento 1 falla"
+    },
+    "material": {
+      "mcnemar": {
+        "b": 124,
+        "c": 72,
+        "discordantes": 196,
+        "p_valor": 0.0002499205508094502,
+        "significativo": true
+      },
+      "diferencia_exactitud": {
+        "valor": -0.03649122807017546,
+        "intervalo": [
+          -0.057543859649122786,
+          -0.018228070175438517
+        ]
+      }
+    },
+    "caneca": {
+      "mcnemar": {
+        "b": 35,
+        "c": 34,
+        "discordantes": 69,
+        "p_valor": 1.0,
+        "significativo": false
+      },
+      "diferencia_exactitud": {
+        "valor": -0.00070175438596487,
+        "intervalo": [
+          -0.011929824561403568,
+          0.010526315789473717
+        ]
+      }
+    }
+  }
+}

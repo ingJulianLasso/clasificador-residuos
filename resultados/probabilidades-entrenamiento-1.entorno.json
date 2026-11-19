@@ -1,0 +1,38 @@
+{
+  "modelo": "proyecto-final/modelo/entrenamiento-1",
+  "imagenes": 1425,
+  "base_imagenes": "proyecto-final/datos/realwaste",
+  "etiquetas": [
+    "Cardboard",
+    "Food Organics",
+    "Glass",
+    "Metal",
+    "Miscellaneous Trash",
+    "Paper",
+    "Plastic",
+    "Textile Trash",
+    "Vegetation"
+  ],
+  "libreria": "fijada",
+  "paquetes": {
+    "@tensorflow/tfjs": "1.3.1",
+    "@teachablemachine/image": "0.8.5"
+  },
+  "versiones_tfjs": {
+    "tfjs-core": "1.3.1",
+    "tfjs-data": "1.3.1",
+    "tfjs-layers": "1.3.1",
+    "tfjs-converter": "1.3.1",
+    "tfjs": "1.3.1"
+  },
+  "version_interna_tm_image": "0.8.4-alpha2",
+  "backend": "webgl",
+  "renderizador_pagina": "Brave",
+  "navegador": "157.0.8103.79",
+  "renderizador_gpu": "ANGLE (NVIDIA, Vulkan 1.4.351 (NVIDIA NVIDIA GeForce RTX 5080 (0x00002C02)), NVIDIA-615.71.9.0)",
+  "implementacion_gl": "(gl=egl-angle,angle=vulkan)",
+  "segundos": 19.517799999999813,
+  "tensores_antes": 263,
+  "tensores_al_final": 263,
+  "fecha": "2026-11-17T14:59:32-05:00"
+}

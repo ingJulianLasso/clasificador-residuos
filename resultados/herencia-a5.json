@@ -1,0 +1,9 @@
+{
+  "commit_raiz": "19ed8381b50b6618e16fea5dcc4ce881391db3a6",
+  "sha256": {
+    "web/inferencia.js": "00e94fa00aa3b0ed9a1d8c5e978266ec892c4c2f7d472346346a40a4b9bc1ec7",
+    "web/evaluacion.html": "d0662545a7d0a19304971b30a28511ec85ee2c40add2808a0764baae0b1c311d"
+  },
+  "elegido": "entrenamiento_2",
+  "url_elegido": "https://teachablemachine.withgoogle.com/models/9PKzru-J4/"
+}

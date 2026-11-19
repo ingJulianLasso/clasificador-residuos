@@ -1,0 +1,254 @@
+{
+  "zip": {
+    "url": "https://archive.ics.uci.edu/static/public/908/realwaste.zip",
+    "archivo": "datos/descarga/realwaste.zip",
+    "bytes": 688545323,
+    "mib": 656.6,
+    "sha256": "1ede08b32358ee62065bcc1c8cb47a2ece04e8dff5b1fb53342bb8750895b2f3",
+    "fecha_descarga": "2026-11-17",
+    "entradas": 4764,
+    "directorios": 11,
+    "archivos": 4753,
+    "imagenes": 4752,
+    "no_imagen": [
+      {
+        "archivo": "realwaste-main/README.md",
+        "bytes": 783
+      }
+    ],
+    "extensiones": {
+      ".jpg": 4752,
+      ".md": 1
+    }
+  },
+  "diferencia_con_uci": {
+    "instancias_uci": 4752,
+    "archivos_zip": 4753,
+    "imagenes_zip": 4752,
+    "diferencia": 1,
+    "imagenes_igual_a_uci": true,
+    "explicacion": "El ZIP trae 4753 archivos: 4752 imágenes JPG y 1 archivo que no es imagen (realwaste-main/README.md, de 783 bytes). Las 4752 instancias que reporta UCI son las imágenes, así que la diferencia corresponde a lo que no es imagen."
+  },
+  "imagenes": {
+    "por_clase": {
+      "Cardboard": {
+        "archivos": 461,
+        "uci": 461,
+        "coincide_con_uci": true
+      },
+      "Food Organics": {
+        "archivos": 411,
+        "uci": 411,
+        "coincide_con_uci": true
+      },
+      "Glass": {
+        "archivos": 420,
+        "uci": 420,
+        "coincide_con_uci": true
+      },
+      "Metal": {
+        "archivos": 790,
+        "uci": 790,
+        "coincide_con_uci": true
+      },
+      "Miscellaneous Trash": {
+        "archivos": 495,
+        "uci": 495,
+        "coincide_con_uci": true
+      },
+      "Paper": {
+        "archivos": 500,
+        "uci": 500,
+        "coincide_con_uci": true
+      },
+      "Plastic": {
+        "archivos": 921,
+        "uci": 921,
+        "coincide_con_uci": true
+      },
+      "Textile Trash": {
+        "archivos": 318,
+        "uci": 318,
+        "coincide_con_uci": true
+      },
+      "Vegetation": {
+        "archivos": 436,
+        "uci": 436,
+        "coincide_con_uci": true
+      }
+    },
+    "formatos": {
+      "JPEG": 4752
+    },
+    "modos_de_color": {
+      "RGB": 4752
+    },
+    "dimensiones": {
+      "524x524": 4752
+    },
+    "orientacion_exif": {
+      "sin etiqueta": 4752
+    },
+    "no_abren": []
+  },
+  "duplicados_exactos": {
+    "criterio": "SHA-256 idéntico. Se conserva la primera ruta en orden alfabético; si las clases difieren, se excluyen todas",
+    "grupos": 0,
+    "imagenes_en_grupos": 0,
+    "grupos_entre_clases": 0,
+    "excluidas_por_copia": 0,
+    "excluidas_entre_clases": 0,
+    "detalle": []
+  },
+  "casi_duplicados": {
+    "criterio": "phash de 64 bits (imagehash) a distancia de Hamming de 4 o menos; los grupos son las componentes conexas de esos pares y nunca se parten entre entrenamiento y prueba",
+    "distancia_maxima": 4,
+    "pares_contando_duplicados_exactos": 14,
+    "pares": 14,
+    "pares_misma_clase": 9,
+    "pares_entre_clases": 5,
+    "pares_por_distancia": {
+      "2": 3,
+      "4": 11
+    },
+    "grupos_de_varias_imagenes": 11,
+    "imagenes_en_esos_grupos": 24,
+    "tamano_maximo_de_grupo": 3,
+    "pares_entre_clases_por_clases": {
+      "Cardboard y Metal": 1,
+      "Food Organics y Metal": 1,
+      "Metal y Plastic": 2,
+      "Metal y Textile Trash": 1
+    },
+    "pares_entre_clases_detalle": [
+      {
+        "archivo_a": "Cardboard/Cardboard_132.jpg",
+        "archivo_b": "Metal/Metal_559.jpg",
+        "distancia": 4
+      },
+      {
+        "archivo_a": "Food Organics/Food Organics_150.jpg",
+        "archivo_b": "Metal/Metal_326.jpg",
+        "distancia": 4
+      },
+      {
+        "archivo_a": "Metal/Metal_127.jpg",
+        "archivo_b": "Textile Trash/Textile Trash_219.jpg",
+        "distancia": 4
+      },
+      {
+        "archivo_a": "Metal/Metal_738.jpg",
+        "archivo_b": "Plastic/Plastic_204.jpg",
+        "distancia": 4
+      },
+      {
+        "archivo_a": "Metal/Metal_738.jpg",
+        "archivo_b": "Plastic/Plastic_763.jpg",
+        "distancia": 4
+      }
+    ],
+    "tratamiento": "Los pares entre clases conservan su etiqueta y su grupo va entero a una sola partición; se reportan para revisar si son ruido de etiqueta o coincidencias del fondo"
+  },
+  "particion": {
+    "semilla": 42,
+    "fraccion_prueba": 0.3,
+    "criterio": "Por clase, el 30 % de las imágenes incluidas va a prueba (redondeo al entero más cercano). Los grupos de casi duplicados se recorren en orden aleatorio con la semilla y entran enteros a prueba mientras quepan en el cupo de todas sus clases",
+    "balanceado_criterio": "Submuestreo sin reemplazo del entrenamiento al tamaño de la clase menor, con la misma semilla",
+    "por_clase": {
+      "Cardboard": {
+        "total": 461,
+        "excluidas": 0,
+        "incluidas": 461,
+        "entrenamiento": 323,
+        "prueba": 138,
+        "fraccion_prueba": 0.2993,
+        "balanceado": 223
+      },
+      "Food Organics": {
+        "total": 411,
+        "excluidas": 0,
+        "incluidas": 411,
+        "entrenamiento": 288,
+        "prueba": 123,
+        "fraccion_prueba": 0.2993,
+        "balanceado": 223
+      },
+      "Glass": {
+        "total": 420,
+        "excluidas": 0,
+        "incluidas": 420,
+        "entrenamiento": 294,
+        "prueba": 126,
+        "fraccion_prueba": 0.3,
+        "balanceado": 223
+      },
+      "Metal": {
+        "total": 790,
+        "excluidas": 0,
+        "incluidas": 790,
+        "entrenamiento": 553,
+        "prueba": 237,
+        "fraccion_prueba": 0.3,
+        "balanceado": 223
+      },
+      "Miscellaneous Trash": {
+        "total": 495,
+        "excluidas": 0,
+        "incluidas": 495,
+        "entrenamiento": 346,
+        "prueba": 149,
+        "fraccion_prueba": 0.301,
+        "balanceado": 223
+      },
+      "Paper": {
+        "total": 500,
+        "excluidas": 0,
+        "incluidas": 500,
+        "entrenamiento": 350,
+        "prueba": 150,
+        "fraccion_prueba": 0.3,
+        "balanceado": 223
+      },
+      "Plastic": {
+        "total": 921,
+        "excluidas": 0,
+        "incluidas": 921,
+        "entrenamiento": 645,
+        "prueba": 276,
+        "fraccion_prueba": 0.2997,
+        "balanceado": 223
+      },
+      "Textile Trash": {
+        "total": 318,
+        "excluidas": 0,
+        "incluidas": 318,
+        "entrenamiento": 223,
+        "prueba": 95,
+        "fraccion_prueba": 0.2987,
+        "balanceado": 223
+      },
+      "Vegetation": {
+        "total": 436,
+        "excluidas": 0,
+        "incluidas": 436,
+        "entrenamiento": 305,
+        "prueba": 131,
+        "fraccion_prueba": 0.3005,
+        "balanceado": 223
+      }
+    },
+    "totales": {
+      "total": 4752,
+      "excluidas": 0,
+      "incluidas": 4752,
+      "entrenamiento": 3327,
+      "prueba": 1425,
+      "balanceado": 2007
+    },
+    "particion_csv": {
+      "archivo": "datos/particion.csv",
+      "filas": 4752,
+      "sha256": "baf3da0e8c7778e5c66064e5c6aa5e11164c497db4764214f490037e0161bf97"
+    }
+  }
+}

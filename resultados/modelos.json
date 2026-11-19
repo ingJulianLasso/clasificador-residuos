@@ -1,0 +1,132 @@
+{
+  "entrenamiento_1": {
+    "descripcion": "70 % de entrenamiento tal cual",
+    "url": "https://teachablemachine.withgoogle.com/models/6pX4zDxJa/",
+    "carpeta_local": "modelo/entrenamiento-1",
+    "carpeta_alojada": "modelo/alojado-1",
+    "fecha_descarga_alojado": "2026-11-17",
+    "sha256_local": "52bfe53a742a6635fb8a0aeda81419a569d8d20f833915dce87a6e1601a23221",
+    "sha256_alojado": "52bfe53a742a6635fb8a0aeda81419a569d8d20f833915dce87a6e1601a23221",
+    "pesos_identicos": true,
+    "bytes_pesos": 2156832,
+    "etiquetas": [
+      "Cardboard",
+      "Food Organics",
+      "Glass",
+      "Metal",
+      "Miscellaneous Trash",
+      "Paper",
+      "Plastic",
+      "Textile Trash",
+      "Vegetation"
+    ],
+    "etiquetas_identicas": true,
+    "model_json": {
+      "topologia_identica": true,
+      "manifiesto_de_pesos_identico_salvo_ruta": true,
+      "ruta_de_pesos_alojado": [
+        "./model.weights.bin"
+      ],
+      "ruta_de_pesos_local": [
+        "weights.bin"
+      ],
+      "claves_solo_en_alojado": [
+        "convertedBy",
+        "format",
+        "generatedBy"
+      ]
+    },
+    "exactitud_media_validacion": 0.8,
+    "exactitud_media_validacion_redondeada": 0.8,
+    "exactitud_por_clase_validacion": {
+      "Cardboard": 0.67,
+      "Food Organics": 0.89,
+      "Glass": 0.87,
+      "Metal": 0.82,
+      "Miscellaneous Trash": 0.67,
+      "Paper": 0.85,
+      "Plastic": 0.73,
+      "Textile Trash": 0.79,
+      "Vegetation": 0.91
+    },
+    "exactitud_global_validacion": 0.7932405566600398,
+    "imagenes_validacion": 503,
+    "imagenes_entrenamiento": 3327
+  },
+  "entrenamiento_2": {
+    "descripcion": "70 % balanceado al tamaño de la clase menor",
+    "url": "https://teachablemachine.withgoogle.com/models/9PKzru-J4/",
+    "carpeta_local": "modelo/entrenamiento-2",
+    "carpeta_alojada": "modelo/alojado-2",
+    "fecha_descarga_alojado": "2026-11-17",
+    "sha256_local": "d9575f17f6219844296ca8fd553015166c9a2000962c60eb076ef6b80397acac",
+    "sha256_alojado": "d9575f17f6219844296ca8fd553015166c9a2000962c60eb076ef6b80397acac",
+    "pesos_identicos": true,
+    "bytes_pesos": 2156832,
+    "etiquetas": [
+      "Cardboard",
+      "Food Organics",
+      "Glass",
+      "Metal",
+      "Miscellaneous Trash",
+      "Paper",
+      "Plastic",
+      "Textile Trash",
+      "Vegetation"
+    ],
+    "etiquetas_identicas": true,
+    "model_json": {
+      "topologia_identica": true,
+      "manifiesto_de_pesos_identico_salvo_ruta": true,
+      "ruta_de_pesos_alojado": [
+        "./model.weights.bin"
+      ],
+      "ruta_de_pesos_local": [
+        "weights.bin"
+      ],
+      "claves_solo_en_alojado": [
+        "convertedBy",
+        "format",
+        "generatedBy"
+      ]
+    },
+    "exactitud_media_validacion": 0.8266666666666667,
+    "exactitud_media_validacion_redondeada": 0.83,
+    "exactitud_por_clase_validacion": {
+      "Cardboard": 0.85,
+      "Food Organics": 0.88,
+      "Glass": 0.91,
+      "Metal": 0.74,
+      "Miscellaneous Trash": 0.71,
+      "Paper": 0.85,
+      "Plastic": 0.74,
+      "Textile Trash": 0.88,
+      "Vegetation": 0.88
+    },
+    "exactitud_global_validacion": 0.826797385620915,
+    "imagenes_validacion": 306,
+    "imagenes_entrenamiento": 2007
+  },
+  "elegido": "entrenamiento_2",
+  "regla": {
+    "texto": "Se elige el entrenamiento con la mayor exactitud media por clase en la validación interna de Teachable Machine; si empatan en la cifra que muestra la herramienta, el balanceado. El conjunto de prueba no interviene en la elección.",
+    "criterio": "media de la exactitud por clase de la tabla «Precisión por clase», con los 2 decimales que muestra la herramienta",
+    "empate": "medias iguales al redondearlas a 2 decimales; gana el balanceado (entrenamiento 2)",
+    "fijada": "antes de entrenar (plan de la Actividad 5, §2.3)",
+    "comparacion": {
+      "entrenamiento_1": 0.8,
+      "entrenamiento_2": 0.83
+    },
+    "hubo_empate": false,
+    "nota_validacion": "Las validaciones internas tienen tamaños distintos (15 % de cada clase, redondeado hacia arriba): entrenamiento 1, 503 imágenes; entrenamiento 2, 306 imágenes. Teachable Machine las sortea sin semilla en cada entrenamiento."
+  },
+  "predicciones_alojado_vs_local": {
+    "identicas": true,
+    "diferencia_maxima": 0.0,
+    "mismo_material_y_caneca": true,
+    "imagenes": 1425,
+    "columnas_comparadas": 12,
+    "csv_local": "resultados/probabilidades-entrenamiento-2.csv",
+    "csv_alojado": "resultados/probabilidades-prueba-elegido.csv"
+  }
+}
