@@ -1,9 +1,9 @@
 {
-  "url": "http://127.0.0.1:8766/web/",
-  "commit": null,
+  "url": "https://ingjulianlasso.github.io/clasificador-residuos/web/",
+  "commit": "b1df67f97be87263627fa5714f5b3276ea6e9330",
   "cambios_sin_commit": true,
-  "hora": "2026-11-19T11:33:42-05:00",
-  "navegador": "157.0.8103.79",
+  "hora": "2026-11-21T09:38:57-05:00",
+  "navegador": "158.0.8127.42",
   "origen_modelo": [
     {
       "url": "https://teachablemachine.withgoogle.com/models/9PKzru-J4/model.json",
@@ -57,7 +57,7 @@
       "iguales": true
     }
   },
-  "segundos_evaluacion": 17.3,
+  "segundos_evaluacion": 19.6,
   "entorno": {
     "libreria": "fijada",
     "paquetes": {
