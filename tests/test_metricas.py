@@ -29,7 +29,8 @@ from residuos.robustez import (
 TOLERANCIA = 1e-9
 FUENTES_PERMITIDAS = re.compile(
     r"^(particion\.csv|inventario\.json|canecas\.json|modelos\.json|paridad-a2\.csv"
-    r"|tm-entrenamiento-[12]\.json|metricas-(entrenamiento-[12]|elegido|robustez|campo)\.json)$"
+    r"|tm-entrenamiento-[12]\.json|metricas-(entrenamiento-[12]|elegido|robustez|campo)\.json"
+    r"|app-paridad\.json|probabilidades-prueba-elegido\.csv|umbrales\.js)$"
 )
 
 
@@ -230,7 +231,7 @@ def test_cada_macro_sale_de_una_fuente_permitida_y_su_clave_existe():
     macros = cifras.todas_las_macros()
     for macro in macros:
         archivos_origen, _, ruta = macro.origen.partition(": ")
-        archivos = re.findall(r"[\w.-]+\.(?:json|csv)", archivos_origen)
+        archivos = re.findall(r"[\w.-]+\.(?:json|csv|js)\b", archivos_origen)
         assert archivos, macro
         assert all(FUENTES_PERMITIDAS.match(a) for a in archivos), macro
         if len(archivos) == 1 and archivos[0].endswith(".json") and cifras.SEPARADOR in ruta and "(" not in ruta:

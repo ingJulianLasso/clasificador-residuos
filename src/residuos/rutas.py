@@ -15,8 +15,9 @@ CANECAS = RAIZ_CLASIFICADOR / "config" / "canecas.json"
 PARTICION = RAIZ_CLASIFICADOR / "datos" / "particion.csv"
 INVENTARIO = RAIZ_CLASIFICADOR / "datos" / "inventario.json"
 
-# Destino de las macros del informe.
-TEX_GENERADO = RAIZ_PROYECTO.parent / "entregas" / "actividad-5" / "informe" / "latex" / "generado"
+# Destino de las macros del informe: el de la Actividad 6, que extiende el de la Actividad 5. El de la
+# Actividad 5 quedó como se entregó; se regenera con ``--destino`` y sin las macros de la aplicación.
+TEX_GENERADO = RAIZ_PROYECTO.parent / "entregas" / "actividad-6" / "informe" / "latex" / "generado"
 
 # Modelos exportados (copias locales y descargas de los alojados) y salidas de la evaluación.
 MODELOS = RAIZ_PROYECTO / "modelo"

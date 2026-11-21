@@ -5,11 +5,15 @@ Uso, desde ``clasificador/``:
     uv run python -m residuos.cifras                # escribe generado/cifras.tex y generado/tablas/*.tex
     uv run python -m residuos.cifras --comprobar    # regenera todo en una carpeta temporal y lo compara
 
+El destino por defecto es el informe de la Actividad 6 (``rutas.TEX_GENERADO``); ``--destino`` escribe
+en otra carpeta generado/.
+
 Ninguna cifra del texto se escribe a mano. Cada macro lleva en un comentario el archivo y el campo de
 donde sale; en los JSON, la ruta de claves va separada por `` > `` y una nota entre paréntesis indica
 cuando la cifra es un cálculo sobre esos campos (un mínimo, una diferencia). Las fuentes son
 ``particion.csv``, ``inventario.json``, ``canecas.json`` (nombres), ``tm-entrenamiento-*.json``,
-``modelos.json``, ``metricas-*.json`` y ``paridad-a2.csv``.
+``modelos.json``, ``metricas-*.json`` y ``paridad-a2.csv``; las de la aplicación (prefijos ``App`` y
+``Aviso``), ``app-paridad.json``, ``web/umbrales.js`` y ``probabilidades-prueba-elegido.csv``.
 
 Las macros con prefijo ``Campo`` y la fila «Fotos propias (campo)» de la tabla de robustez solo se
 generan si existe ``resultados/metricas-campo.json`` (``--campo`` indica otra ruta); sin ese archivo,
@@ -599,6 +603,113 @@ def macros_resultados(canecas: dict) -> list[Macro]:
     ]
 
 
+# Aplicación de la Actividad 6: sus pruebas en el navegador (app-paridad.json) y los dos avisos de Clasificar
+
+APP_PARIDAD = rutas.RESULTADOS / "app-paridad.json"
+UMBRALES_APP = rutas.RAIZ_CLASIFICADOR / "web" / "umbrales.js"
+PROBABILIDADES_PRUEBA = rutas.RESULTADOS / "probabilidades-prueba-elegido.csv"
+VISTA_EN_LA_CLAVE = re.compile(r"^(?P<vista>[a-z]+) (?P<ancho>\d+) px, ")
+PAQUETES_APP = {"@tensorflow/tfjs": "AppVersionTfjs", "@teachablemachine/image": "AppVersionTmImage"}
+
+
+@dataclass(frozen=True)
+class Aviso:
+    """Un aviso de Clasificar: se muestra cuando la probabilidad de lo elegido es menor que el umbral."""
+
+    prefijo: str
+    constante: str
+    columna_elegida: str
+    prefijo_probabilidad: str
+    columna_real: str
+
+
+AVISOS = (
+    Aviso("AvisoCaneca", "UMBRAL_CANECA_DUDOSA", "caneca", "prob_caneca_", "caneca_real"),
+    Aviso("AvisoMaterial", "UMBRAL_LEJOS_DE_LO_APRENDIDO", "material", "prob_", "clase_real"),
+)
+
+
+def validar_app(app: Fuente) -> None:
+    """Lo que el informe da por hecho de las pruebas de la aplicación; si algo falla, no hay macros."""
+    axe = [vista["serias_o_criticas"] for pestana in app.valor("axe").values() if isinstance(pestana, dict) for vista in pestana.values()]
+    clasificar = app.valor("clasificar")
+    fallas = {
+        "probabilidades distintas de las de la evaluación": not app.valor("iguales"),
+        "métricas distintas de las de la evaluación": not app.valor("metricas_iguales"),
+        "violaciones serias o críticas de axe": any(axe),
+        "desplazamiento horizontal en el celular": any(app.valor("desplazamiento_horizontal_px").values()),
+        "tarjetas de Clasificar distintas de la evaluación": clasificar["iguales_a_la_evaluacion"] != clasificar["tarjetas"],
+    }
+    problemas = [descripcion for descripcion, falla in fallas.items() if falla]
+    if problemas:
+        raise ValueError(f"{app.archivo}: {'; '.join(problemas)}")
+
+
+def macros_anchos(app: Fuente) -> list[Macro]:
+    """El ancho de cada vista angosta, que va en la clave de desplazamiento_horizontal_px."""
+    anchos = {}
+    for clave in app.valor("desplazamiento_horizontal_px"):
+        vista = VISTA_EN_LA_CLAVE.match(clave)
+        anchos[vista["vista"]] = vista["ancho"]
+    origen = app.origen("desplazamiento_horizontal_px", nota="ancho de la vista en la clave")
+    return [Macro(f"AppAncho{identificador(vista)}", ancho, origen) for vista, ancho in anchos.items()]
+
+
+def macros_pruebas_app(app: Fuente) -> list[Macro]:
+    return [
+        app.macro("AppParidadImagenes", entero, "paridad", "n"),
+        app.macro("AppParidadReferencia", entero, "paridad", "n_referencia"),
+        app.macro("AppParidadMismoMaterialYCaneca", entero, "paridad", "mismo_material_y_caneca"),
+        app.macro("AppParidadDiferenciaMaxima", lambda v: "0" if v == 0 else decimal(v, 7), "paridad", "diferencia_maxima"),
+        app.macro("AppSegundosEvaluacion", decimal, "segundos_evaluacion"),
+        *(app.macro(nombre, str, "entorno", "paquetes", paquete) for paquete, nombre in PAQUETES_APP.items()),
+        app.macro("AppClasificarArchivos", entero, "clasificar", "archivos"),
+        app.macro("AppClasificarTarjetas", entero, "clasificar", "tarjetas"),
+        app.macro("AppClasificarErrores", entero, "clasificar", "errores"),
+        app.macro("AppClasificarFilasCsv", entero, "clasificar", "filas_csv"),
+        app.macro("AppAxeVersion", str, "axe", "version"),
+        *macros_anchos(app),
+    ]
+
+
+def umbral_de_la_app(constante: str) -> float:
+    coincidencia = re.search(rf"export const {constante} = (?P<valor>\d+(?:\.\d+)?);", UMBRALES_APP.read_text(encoding="utf-8"))
+    if coincidencia is None:
+        raise ValueError(f"{UMBRALES_APP.name} no define {constante}")
+    return float(coincidencia["valor"])
+
+
+def probabilidad_de_lo_elegido(prueba: pd.DataFrame, aviso: Aviso) -> pd.Series:
+    return prueba.apply(lambda fila: fila[f"{aviso.prefijo_probabilidad}{fila[aviso.columna_elegida]}"], axis=1)
+
+
+def macros_aviso(prueba: pd.DataFrame, aviso: Aviso) -> list[Macro]:
+    """Cobertura (fracción sin aviso) y aciertos con y sin el aviso, sobre el conjunto de prueba."""
+    umbral = umbral_de_la_app(aviso.constante)
+    con_aviso = probabilidad_de_lo_elegido(prueba, aviso) < umbral
+    acierto = prueba[aviso.columna_elegida] == prueba[aviso.columna_real]
+    if con_aviso.all() or not con_aviso.any():
+        raise ValueError(f"El aviso {aviso.constante} no separa el conjunto de prueba")
+    origen = f"{PROBABILIDADES_PRUEBA.name} y {UMBRALES_APP.name}: {aviso.columna_elegida} con probabilidad menor que {aviso.constante}"
+    p = aviso.prefijo
+    return [
+        Macro(f"{p}Umbral", decimal(umbral, 2), f"{UMBRALES_APP.name}: {aviso.constante}"),
+        Macro(f"{p}Imagenes", entero(con_aviso.sum()), f"{origen} (cuenta)"),
+        Macro(f"{p}Cobertura", metrica(1 - con_aviso.mean()), f"{origen} (fracción sin aviso)"),
+        Macro(f"{p}ExactitudSinAviso", metrica(acierto[~con_aviso].mean()), f"{origen} (aciertos sin aviso)"),
+        Macro(f"{p}ExactitudConAviso", metrica(acierto[con_aviso].mean()), f"{origen} (aciertos con aviso)"),
+        Macro(f"{p}ErroresAvisados", entero((con_aviso & ~acierto).sum()), f"{origen} (errores con aviso)"),
+    ]
+
+
+def macros_app(canecas: dict) -> list[Macro]:
+    app = cargar_fuente(APP_PARIDAD)
+    validar_app(app)
+    prueba = pd.read_csv(PROBABILIDADES_PRUEBA)
+    prueba["caneca_real"] = prueba["clase_real"].map({etiqueta: m["caneca"] for etiqueta, m in canecas["materiales"].items()})
+    return [*macros_pruebas_app(app), *(m for aviso in AVISOS for m in macros_aviso(prueba, aviso))]
+
+
 # Prueba en campo (solo si existe metricas-campo.json)
 
 PREFIJO_CAMPO = "Campo"
@@ -684,7 +795,11 @@ def cargar_json(ruta: Path) -> dict:
 
 def todas_las_macros(campo: Path = rutas.METRICAS_CAMPO) -> list[Macro]:
     canecas = cargar_json(rutas.CANECAS)
-    macros = [*macros_dataset(cargar_json(rutas.INVENTARIO), leer_particion(), canecas), *macros_resultados(canecas)]
+    macros = [
+        *macros_dataset(cargar_json(rutas.INVENTARIO), leer_particion(), canecas),
+        *macros_resultados(canecas),
+        *macros_app(canecas),
+    ]
     if campo.exists():
         macros += macros_campo(cargar_fuente(campo), canecas)
     return macros
