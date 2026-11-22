@@ -281,21 +281,21 @@ def antes_despues() -> plt.Figure:
     filas = [(nombre(c), uno["material"]["valores"][f"recall.{c}"], dos["material"]["valores"][f"recall.{c}"]) for c in clases]
     filas.sort(key=lambda fila: fila[2])
     resumen = [
-        ("Exactitud balanceada (prueba)", uno["material"]["valores"]["exactitud_balanceada"], dos["material"]["valores"]["exactitud_balanceada"]),
-        ("Media por clase (validación)", *(modelos[f"entrenamiento_{n}"]["exactitud_media_validacion"] for n in (1, 2))),
+        ("Exactitud balanceada\n(prueba)", uno["material"]["valores"]["exactitud_balanceada"], dos["material"]["valores"]["exactitud_balanceada"]),
+        ("Media por clase\n(validación)", *(modelos[f"entrenamiento_{n}"]["exactitud_media_validacion"] for n in (1, 2))),
     ]
-    todas = filas + [None] + resumen
-    figura, eje = plt.subplots(figsize=(MEDIA, 3.05))
-    for posicion, fila in enumerate(todas):
-        if fila is None:
-            eje.axhline(posicion, color=GRIS_CLARO, linewidth=0.6)
-            continue
-        _, valor_1, valor_2 = fila
+    # Las etiquetas del resumen van en dos líneas para que el panel quepa a media página sin reducirse;
+    # por eso sus filas se separan un poco más que las de los materiales.
+    separador = len(filas)
+    posiciones = [*range(separador), *(separador + 0.9 + 1.5 * i for i in range(len(resumen)))]
+    figura, eje = plt.subplots(figsize=(MEDIA, 2.58), layout="constrained")
+    eje.axhline(separador, color=GRIS_CLARO, linewidth=0.6)
+    for posicion, (_, valor_1, valor_2) in zip(posiciones, filas + resumen, strict=True):
         eje.plot([valor_1, valor_2], [posicion, posicion], color=GRIS_CLARO, linewidth=1.2, zorder=1)
         eje.scatter(valor_1, posicion, s=16, color=GRIS_MEDIO, zorder=2, label="Entrenamiento 1 (completo)" if posicion == 0 else None)
         eje.scatter(valor_2, posicion, s=18, marker="D", color=ACENTO, zorder=3,
                     label="Entrenamiento 2 (balanceado)" if posicion == 0 else None)  # fmt: skip
-    eje.set_yticks([i for i, f in enumerate(todas) if f], [f[0] for f in todas if f], fontsize=7)
+    eje.set_yticks(posiciones, [f[0] for f in filas + resumen], fontsize=7, linespacing=1.0)
     eje.set_xlabel("Recall por material (exactitud por clase)")
     eje.xaxis.set_major_formatter(coma(2))
     eje.xaxis.grid(True)
